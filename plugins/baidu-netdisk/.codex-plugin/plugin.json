@@ -1,14 +1,14 @@
 {
   "name": "baidu-netdisk",
   "version": "0.1.0",
-  "description": "Access files in an authorized Baidu Netdisk account through the official OAuth API.",
+  "description": "Access files in an authorized Baidu Netdisk account through the official OAuth API. 通过官方 OAuth API 访问已授权的百度网盘文件。",
   "author": {
     "name": "yikehuang"
   },
   "interface": {
-    "displayName": "Baidu Netdisk",
-    "shortDescription": "Search and download files from your Baidu Netdisk.",
-    "longDescription": "A Windows-only Codex and ChatGPT desktop plugin that lists, searches, and downloads files from an authorized Baidu Netdisk account using the official OAuth API. Secrets and OAuth tokens are encrypted locally with Windows DPAPI.",
+    "displayName": "Baidu Netdisk / 百度网盘",
+    "shortDescription": "Search and download Baidu Netdisk files. 搜索并下载百度网盘文件。",
+    "longDescription": "A Windows-only Codex and ChatGPT desktop plugin that lists, searches, and downloads files from an authorized Baidu Netdisk account using the official OAuth API. Secrets and OAuth tokens are encrypted locally with Windows DPAPI. 这是一个仅支持 Windows 的 Codex 和 ChatGPT 桌面版插件，通过官方 OAuth API 列出、搜索并下载已授权的百度网盘文件。Secret Key 与 OAuth 令牌使用 Windows DPAPI 在本地加密。",
     "developerName": "yikehuang",
     "category": "Productivity",
     "capabilities": [
@@ -18,7 +18,10 @@
     "defaultPrompt": [
       "Check my Baidu Netdisk authorization status.",
       "Search my Baidu Netdisk for a file.",
-      "Download selected files from my Baidu Netdisk."
+      "Download selected files from my Baidu Netdisk.",
+      "检查我的百度网盘授权状态。",
+      "在我的百度网盘中搜索文件。",
+      "从我的百度网盘下载选中的文件。"
     ]
   },
   "mcpServers": "./.mcp.json"

@@ -25,6 +25,7 @@ class PluginTests(unittest.TestCase):
         )
 
         self.assertEqual(plugin["name"], "baidu-netdisk")
+        self.assertEqual(plugin["version"], "0.1.0")
         self.assertNotIn("skills", plugin)
         self.assertEqual(mcp["mcpServers"]["baidu-netdisk"]["command"], "cmd.exe")
         self.assertEqual(marketplace["plugins"][0]["source"]["path"], "./plugins/baidu-netdisk")
@@ -32,6 +33,19 @@ class PluginTests(unittest.TestCase):
         for path in ROOT.rglob("*"):
             if path.is_file() and path.suffix.lower() in {".json", ".py", ".cmd", ".md"}:
                 self.assertNotIn("C:\\Users\\", path.read_text(encoding="utf-8"), str(path))
+
+    def test_bilingual_release_metadata(self) -> None:
+        plugin = json.loads((PLUGIN / ".codex-plugin" / "plugin.json").read_text(encoding="utf-8"))
+        marketplace = json.loads(
+            (ROOT / ".agents" / "plugins" / "marketplace.json").read_text(encoding="utf-8")
+        )
+
+        self.assertIn("百度网盘", plugin["interface"]["displayName"])
+        self.assertTrue(any("百度网盘" in prompt for prompt in plugin["interface"]["defaultPrompt"]))
+        self.assertIn("百度网盘", marketplace["interface"]["displayName"])
+        self.assertTrue((ROOT / "CHANGELOG.md").is_file())
+        self.assertTrue((ROOT / "releases" / "v0.1.0.md").is_file())
+        self.assertTrue((ROOT / "scripts" / "package_plugin.ps1").is_file())
 
     def test_tool_contract(self) -> None:
         names = [tool["name"] for tool in server.TOOLS]

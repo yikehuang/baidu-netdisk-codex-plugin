@@ -1,0 +1,48 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Build installable package
+        shell: pwsh
+        run: |
+          $version = "${{ github.ref_name }}".TrimStart("v")
+          powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\package_plugin.ps1 -Version $version -OutputDirectory dist
+
+      - name: Publish GitHub Release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $tag = "${{ github.ref_name }}"
+          $notes = Join-Path "releases" "$tag.md"
+          $assets = Get-ChildItem -LiteralPath "dist" -File | ForEach-Object { $_.FullName }
+          $arguments = @("release", "create", $tag)
+          $arguments += $assets
+          $arguments += @(
+            "--repo", "${{ github.repository }}",
+            "--title", "Baidu Netdisk Plugin $tag / 百度网盘插件 $tag"
+          )
+          if (Test-Path -LiteralPath $notes) {
+            $arguments += @("--notes-file", $notes)
+          } else {
+            $arguments += "--generate-notes"
+          }
+          & gh @arguments

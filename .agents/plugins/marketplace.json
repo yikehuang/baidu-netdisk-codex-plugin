@@ -1,7 +1,7 @@
 {
   "name": "baidu-netdisk-community",
   "interface": {
-    "displayName": "Baidu Netdisk Community"
+    "displayName": "Baidu Netdisk Community / 百度网盘社区"
   },
   "plugins": [
     {
