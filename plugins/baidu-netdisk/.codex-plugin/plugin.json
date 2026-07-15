@@ -1,0 +1,25 @@
+{
+  "name": "baidu-netdisk",
+  "version": "0.1.0",
+  "description": "Access files in an authorized Baidu Netdisk account through the official OAuth API.",
+  "author": {
+    "name": "yikehuang"
+  },
+  "interface": {
+    "displayName": "Baidu Netdisk",
+    "shortDescription": "Search and download files from your Baidu Netdisk.",
+    "longDescription": "A Windows-only Codex and ChatGPT desktop plugin that lists, searches, and downloads files from an authorized Baidu Netdisk account using the official OAuth API. Secrets and OAuth tokens are encrypted locally with Windows DPAPI.",
+    "developerName": "yikehuang",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Download"
+    ],
+    "defaultPrompt": [
+      "Check my Baidu Netdisk authorization status.",
+      "Search my Baidu Netdisk for a file.",
+      "Download selected files from my Baidu Netdisk."
+    ]
+  },
+  "mcpServers": "./.mcp.json"
+}

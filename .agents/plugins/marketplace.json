@@ -1,0 +1,20 @@
+{
+  "name": "baidu-netdisk-community",
+  "interface": {
+    "displayName": "Baidu Netdisk Community"
+  },
+  "plugins": [
+    {
+      "name": "baidu-netdisk",
+      "source": {
+        "source": "local",
+        "path": "./plugins/baidu-netdisk"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

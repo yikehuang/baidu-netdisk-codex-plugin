@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "baidu-netdisk": {
+      "title": "Baidu Netdisk",
+      "description": "List, search, and download files from an authorized Baidu Netdisk account.",
+      "command": "cmd.exe",
+      "args": [
+        "/d",
+        "/c",
+        "scripts\\run_server.cmd"
+      ],
+      "cwd": "."
+    }
+  }
+}
